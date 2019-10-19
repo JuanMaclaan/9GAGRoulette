@@ -14,7 +14,7 @@
 
 ##Variables
 
-$9gag = invoke-webrequest "https://9gag.com/"
+$9gag = invoke-webrequest "https://9gag.com/" -UseBasicParsing
 
 ##Function
 
@@ -23,23 +23,23 @@ Function randompost {  Start-Process -FilePath "http://bit.ly/3231YVs"}
 
 ##Function randomsection
 Function randomsection {
-
-$randomsec = Get-Random ($9gag.AllElements | Where {$_.class -eq "badge-upload-section-list-item-selector selector"} | select data-url)
-Start-Process -FilePath "https://9gag.com/$($randomsec."data-url")"}
+	$randomsec = Get-Random ($9gag.AllElements | Where {$_.class -eq "badge-upload-section-list-item-selector selector"} | select data-url)
+	Start-Process -FilePath "https://9gag.com/$($randomsec."data-url")"
+}
 
 ##Function randompopular
 
 Function randompopular {
 
-$num = Get-Random -minimum 1 -maximum 4
+	$num = Get-Random -minimum 1 -maximum 4
 
-Switch ($num) {
-1 {$popular = "hot"}
-2 {$popular = "trending"}
-3 {$popular = "fresh"}
+	Switch ($num) {
+		1 {$popular = "hot"}
+		2 {$popular = "trending"}
+		3 {$popular = "fresh"}
 }
 
-Start-Process -FilePath "https://9gag.com/$($popular)"
+	Start-Process -FilePath "https://9gag.com/$($popular)"
 
 }
 
