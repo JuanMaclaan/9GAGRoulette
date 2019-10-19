@@ -2,7 +2,9 @@
 # NAME: 9GAGRoulette.PS1
 # AUTHOR:https://github.com/schokapyk
 # DATE: 19/10/2019
-## VERSION 1.0
+#
+#
+# VERSION 1.0
 # COMMENTS: Access to random post/section from 9gag.com
 #
 # =======================================================
