@@ -50,12 +50,12 @@ Function randomsection {
     if ($checkbox1.checked -and $script:o -eq 0) {
         $9gag = invoke-webrequest "https://9gag.com/" -UseBasicParsing
                 
-            $listsections = $9gag.links | Select-string -Pattern '(?<=<div class="badge-upload-section-list-item-selector selector" data-url=")[^"]*' -AllMatches | foreach {$_.matches.value}
+            $9gagsec = $9gag.links | Select-string -Pattern '(?<=<div class="badge-upload-section-list-item-selector selector" data-url=")[^"]*' -AllMatches | foreach {$_.matches.value}
             $array = @()
-            Foreach ($sec in $listsections) {
+            Foreach ($sec in $9gagsec) {
             $array += """" + $sec + """"
             }
-            $9gagsec = [system.String]::Join(", ", $array)
+            $sections = [system.String]::Join(", ", $array)
             $script:o++           
     }
                      
